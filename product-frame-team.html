@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BIGROCK 002/TEAM | Ultra-Light All-Round Frame</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@500;700;900&display=swap');
+
+        :root {
+            --bg: #000000;
+            --card-bg: #0a0a0a;
+            --fg: #ffffff;
+            --muted: #888888;
+            --line: #1a1a1a;
+            --accent: #d4af37;
+            /* Gold accent for premium feel */
+            --font-main: "Oswald", "Inter", sans-serif;
+            --font-body: "Inter", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-wrap {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 24px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--fg);
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .hero-pill {
+            display: inline-block;
+            border-left: 2px solid var(--accent);
+            padding-left: 12px;
+            font-size: 11px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .hero-h1 {
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1;
+            margin: 0 0 16px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .hero-h2 {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+            font-family: var(--font-body);
+            font-weight: 300;
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            background: #050505;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 40px;
+            aspect-ratio: 4/3;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-slider .slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-slider .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slider .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-slider .ctrl {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 15px 10px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .hero-slider .ctrl:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .hero-slider .prev {
+            left: 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .hero-slider .next {
+            right: 0;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .hero-slider .dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .hero-slider .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: 0.3s;
+        }
+
+        .hero-slider .dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        /* UCI Badge */
+        .uci-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 2px;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+        .uci-logo {
+            height: 18px;
+            width: auto;
+        }
+
+        /* Geometry Table */
+        .geometry-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--line);
+            background: #000;
+        }
+
+        .geo-img-wrap {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .geo-img-wrap img {
+            max-width: 100%;
+            height: auto;
+            filter: invert(1);
+            /* Since the image has white bg, making it fit the dark theme */
+            opacity: 0.8;
+        }
+
+        .geo-table-container {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+        }
+
+        .geo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-body);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .geo-table th,
+        .geo-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid var(--line);
+        }
+
+        .geo-table th {
+            background: var(--card-bg);
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        .geo-table td:first-child {
+            text-align: left;
+            background: var(--card-bg);
+            color: var(--accent);
+            font-weight: 700;
+            position: sticky;
+            left: 0;
+        }
+
+        .geo-table tr:hover td {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* Value Section */
+        .specs-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-title {
+            font-size: 11px;
+            letter-spacing: 0.2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            display: block;
+            text-align: center;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-block h3 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        .content-block p {
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* Material Highlight */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .material-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            padding: 30px;
+        }
+
+        .material-card h4 {
+            color: var(--accent);
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .material-card .stat {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .material-card p {
+            font-size: 13px;
+            margin: 0;
+        }
+
+        /* Table */
+        .weight-table-wrap {
+            margin-top: 80px;
+            padding: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+        }
+
+        .weight-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-body);
+        }
+
+        .weight-table th,
+        .weight-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .weight-table th {
+            font-family: var(--font-main);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .weight-table td.weight-val {
+            font-weight: 700;
+            color: var(--fg);
+            text-align: right;
+        }
+
+        /* Background/Story */
+        .story-section {
+            padding: 80px 0;
+            background: #050505;
+            border-top: 1px solid var(--line);
+        }
+
+        .test-results {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .test-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line);
+            font-family: var(--font-body);
+            font-size: 14px;
+        }
+
+        .test-item .status {
+            color: #4ade80;
+            /* Success green */
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+        }
+
+        .btn-inquiry {
+            display: inline-block;
+            background: var(--fg);
+            color: var(--bg);
+            padding: 20px 40px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 40px;
+            transition: 0.3s;
+        }
+
+        .btn-inquiry:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav-wrap">
+            <a href="index.html"><img src="src/assets/images/logo.png" alt="BIGROCK" class="logo-img"></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="dealers.html">Dealer</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="hero-pill">Bicycle Frame Series</span>
+                <h1 class="hero-h1">BIGROCK 002/TEAM</h1>
+                <h2 class="hero-h2">超軽量 オールラウンド・ロードフレーム</h2>
+                <div class="uci-badge">
+                    <img src="src/assets/images/uci-logo.svg" alt="UCI" class="uci-logo">
+                    UCI Approved
+                </div>
+                <div class="hero-slider" id="heroSlider">
+                    <div class="slides">
+                        <div class="slide active">
+                            <img src="src/assets/images/frame-team-002-gallery-6.jpg" alt="BIGROCK 002/TEAM Full Bike">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-team-002-gallery-1.jpg" alt="BIGROCK 002/TEAM 1">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-team-002-gallery-2.jpg" alt="BIGROCK 002/TEAM 2">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-team-002-gallery-3.jpg" alt="BIGROCK 002/TEAM 3">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-team-002-gallery-4.jpg" alt="BIGROCK 002/TEAM 4">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-team-002-gallery-5.jpg" alt="BIGROCK 002/TEAM 5">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-team-002-gallery-7.jpg" alt="BIGROCK 002/TEAM Detail 1">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-team-002-gallery-8.jpg" alt="BIGROCK 002/TEAM Detail 2">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-team-002-gallery-9.jpg" alt="BIGROCK 002/TEAM Detail 3">
+                        </div>
+                    </div>
+                    <button class="ctrl prev" id="sliderPrev">&#10094;</button>
+                    <button class="ctrl next" id="sliderNext">&#10095;</button>
+                    <div class="dots">
+                        <button class="dot active" data-index="0"></button>
+                        <button class="dot" data-index="1"></button>
+                        <button class="dot" data-index="2"></button>
+                        <button class="dot" data-index="3"></button>
+                        <button class="dot" data-index="4"></button>
+                        <button class="dot" data-index="5"></button>
+                        <button class="dot" data-index="6"></button>
+                        <button class="dot" data-index="7"></button>
+                        <button class="dot" data-index="8"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="specs-section">
+            <div class="container">
+                <span class="section-title">Design Philosophy</span>
+                <div class="grid-2">
+                    <div class="content-block">
+                        <h3>高次元のバランス</h3>
+                        <p>BIGROCK 002/TEAMフレームは、高弾性・軽量カーボン素材を採用し、「軽さ」「剛性」「しなやかさ」を高次元で両立したオールラウンドロードフレームです。</p>
+                        <p>ヒルクライムから平坦、高速巡航まで対応する万能型設計。軽量性を重視しつつ、レースユースにも耐える剛性バランスを確立しており、カスタムビルドや軽量完成車のベースとして最適です。</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Color Variation</h3>
+                        <ul
+                            style="list-style: none; padding: 0; color: var(--muted); font-family: var(--font-body); font-size: 15px;">
+                            <li style="margin-bottom: 10px;"><span style="color: var(--accent);">●</span> カーボン・クリアブラウン
+                            </li>
+                            <li style="margin-bottom: 10px;"><span style="color: var(--accent);">●</span> カーボン・クリアブルー
+                            </li>
+                            <li><span style="color: var(--accent);">●</span> 別注オーダーカラー (カスタム可能)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <span class="section-title" style="text-align:left; margin-bottom: 15px;">Material</span>
+                        <h4>Mitsubishi T1100</h4>
+                        <span class="stat">7000 MPa</span>
+                        <p>超高剛性を担う、三菱ケミカル製の最先端素材。極限のパワー伝達効率を実現。</p>
+                    </div>
+                    <div class="material-card">
+                        <span class="section-title" style="text-align:left; margin-bottom: 15px;">Material</span>
+                        <h4>Mitsubishi T800</h4>
+                        <span class="stat">18mm Elasticity</span>
+                        <p>高い靭性としなやかさを実現。カーボン素材構成の最適化により弾性性能が向上。</p>
+                    </div>
+                    <div class="material-card">
+                        <span class="section-title" style="text-align:left; margin-bottom: 15px;">Weight</span>
+                        <h4>XXS Size</h4>
+                        <span class="stat">603 g</span>
+                        <p>極限まで削ぎ落とされた重量。アルミパーツを含まないフレーム単体の数値。</p>
+                    </div>
+                </div>
+
+                <div class="weight-table-wrap">
+                    <h3 style="text-align: center; margin-bottom: 30px;">Weight Specifications <small
+                            style="display: block; font-size: 12px; color: var(--muted); margin-top: 5px;">(Frame Only /
+                            アルミパーツ含まず)</small></h3>
+                    <table class="weight-table">
+                        <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th style="text-align: right;">Weight (g)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>XXS (45)</td>
+                                <td class="weight-val">603</td>
+                            </tr>
+                            <tr>
+                                <td>XS (49)</td>
+                                <td class="weight-val">615</td>
+                            </tr>
+                            <tr>
+                                <td>S (52)</td>
+                                <td class="weight-val">626</td>
+                            </tr>
+                            <tr>
+                                <td>M (54)</td>
+                                <td class="weight-val">638</td>
+                            </tr>
+                            <tr>
+                                <td>L (56)</td>
+                                <td class="weight-val">675</td>
+                            </tr>
+                            <tr>
+                                <td>XL (58)</td>
+                                <td class="weight-val">720</td>
+                            </tr>
+                            <tr>
+                                <td>XXL (58)</td>
+                                <td class="weight-val">780</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 12px; color: var(--muted); margin-top: 15px; font-family: var(--font-body);">
+                        ※フロントフォーク重量：285g（コラム未カット）</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="geometry-section">
+            <div class="container">
+                <span class="section-title">Geometry</span>
+                <div class="geo-img-wrap">
+                    <img src="src/assets/images/frame-team-002-geometry.png" alt="BIGROCK 002/TEAM Geometry">
+                </div>
+
+                <div class="geo-table-container">
+                    <table class="geo-table">
+                        <thead>
+                            <tr>
+                                <th>Frame Size</th>
+                                <th>XXS 45</th>
+                                <th>XS 49</th>
+                                <th>S 52</th>
+                                <th>M 54</th>
+                                <th>L 56</th>
+                                <th>XL 58</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Seat Tube (ST)</td>
+                                <td>400</td>
+                                <td>431</td>
+                                <td>462</td>
+                                <td>481</td>
+                                <td>504</td>
+                                <td>532</td>
+                            </tr>
+                            <tr>
+                                <td>Top Tube (TT)</td>
+                                <td>490</td>
+                                <td>508</td>
+                                <td>531</td>
+                                <td>540</td>
+                                <td>562</td>
+                                <td>577</td>
+                            </tr>
+                            <tr>
+                                <td>Head Tube (HT)</td>
+                                <td>102</td>
+                                <td>109</td>
+                                <td>120</td>
+                                <td>137</td>
+                                <td>157</td>
+                                <td>184</td>
+                            </tr>
+                            <tr>
+                                <td>Seat Angle (STA)</td>
+                                <td>76°</td>
+                                <td>75.5°</td>
+                                <td>74°</td>
+                                <td>74°</td>
+                                <td>73.5°</td>
+                                <td>73.5°</td>
+                            </tr>
+                            <tr>
+                                <td>Head Angle (HTA)</td>
+                                <td>70.5°</td>
+                                <td>71.75°</td>
+                                <td>72.5°</td>
+                                <td>73°</td>
+                                <td>73.5°</td>
+                                <td>73.5°</td>
+                            </tr>
+                            <tr>
+                                <td>BB Drop (BD)</td>
+                                <td>74</td>
+                                <td>74</td>
+                                <td>74</td>
+                                <td>72</td>
+                                <td>72</td>
+                                <td>72</td>
+                            </tr>
+                            <tr>
+                                <td>Fork Length (FL)</td>
+                                <td>369</td>
+                                <td>369</td>
+                                <td>369</td>
+                                <td>369</td>
+                                <td>369</td>
+                                <td>369</td>
+                            </tr>
+                            <tr>
+                                <td>Front Rake (FR)</td>
+                                <td>47</td>
+                                <td>47</td>
+                                <td>47</td>
+                                <td>44</td>
+                                <td>44</td>
+                                <td>44</td>
+                            </tr>
+                            <tr>
+                                <td>Front Center (FC)</td>
+                                <td>571</td>
+                                <td>574</td>
+                                <td>577</td>
+                                <td>579</td>
+                                <td>591</td>
+                                <td>605.8</td>
+                            </tr>
+                            <tr>
+                                <td>Rear Center (RC)</td>
+                                <td>410</td>
+                                <td>410</td>
+                                <td>410</td>
+                                <td>410</td>
+                                <td>410</td>
+                                <td>410</td>
+                            </tr>
+                            <tr>
+                                <td>Wheel Base (WB)</td>
+                                <td>970</td>
+                                <td>973</td>
+                                <td>975</td>
+                                <td>978</td>
+                                <td>990</td>
+                                <td>1005</td>
+                            </tr>
+                            <tr>
+                                <td>Stack</td>
+                                <td>502</td>
+                                <td>513</td>
+                                <td>526</td>
+                                <td>543</td>
+                                <td>564</td>
+                                <td>590</td>
+                            </tr>
+                            <tr>
+                                <td>Reach</td>
+                                <td>365</td>
+                                <td>375</td>
+                                <td>380</td>
+                                <td>384</td>
+                                <td>395</td>
+                                <td>402</td>
+                            </tr>
+                            <tr>
+                                <td>Recommended Rider Height</td>
+                                <td>144-158</td>
+                                <td>155-168</td>
+                                <td>164-174</td>
+                                <td>172-180</td>
+                                <td>178-184</td>
+                                <td>182-190</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <div class="container">
+                <span class="section-title">Development Story</span>
+                <div class="grid-2">
+                    <div class="content-block">
+                        <h3>素材最終決定までの背景</h3>
+                        <p>本製品は、約6か月にわたる素材および構造の再検証を実施しました。検証対象には、韓国・暁星（Hyosung）、日本・東レ（Toray）、日本・三菱ケミカルの各カーボン素材を使用し、同一構造条件下で比較テストを行っています。
+                        </p>
+                        <p>その結果、三菱ケミカル製カーボンファイバーは樹脂含有量の安定性において特に優れていることが確認され、最終仕様として正式に採用されました。</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>各種テスト結果</h3>
+                        <p>最終仕様フレームは、従来バージョンと同等の強度基準を維持しています。三菱カーボンの品質安定性により、以下の改善を同時に実現しました。</p>
+                        <div class="test-results">
+                            <div class="test-item"><span>衝撃テスト (Impact)</span><span class="status">PASSED</span></div>
+                            <div class="test-item"><span>疲労耐久テスト (Fatigue)</span><span class="status">PASSED</span>
+                            </div>
+                            <div class="test-item"><span>剛性テスト (Rigidity)</span><span class="status">PASSED</span></div>
+                        </div>
+                        <ul
+                            style="font-family: var(--font-body); font-size: 14px; color: var(--muted); margin-top: 20px; padding-left: 20px;">
+                            <li>路面からの突き上げを効果的に吸収</li>
+                            <li>ライディング時の快適性が向上</li>
+                            <li>フレーム重量のさらなる軽量化</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 60px;">
+                    <a href="contact.html" class="btn-inquiry">製品を問い合わせる</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BIGROCK SPORTS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('heroSlider');
+            if (!slider) return;
+
+            const slides = slider.querySelectorAll('.slide');
+            const dots = slider.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('sliderPrev');
+            const nextBtn = document.getElementById('sliderNext');
+
+            let current = 0;
+            const total = slides.length;
+
+            function showSlide(index) {
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+
+                if (index >= total) current = 0;
+                else if (index < 0) current = total - 1;
+                else current = index;
+
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(current + 1);
+            }
+
+            function prevSlide() {
+                showSlide(current - 1);
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+
+            // Auto play
+            setInterval(nextSlide, 5000);
+        });
+    </script>
+</body>
+
+</html>

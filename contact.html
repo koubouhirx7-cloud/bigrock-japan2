@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | BIGROCK JAPAN</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <style>
+        .contact-container {
+            max-width: 600px;
+            margin: 120px auto 60px;
+            padding: 40px;
+            background-color: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--color-bg-primary);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-primary);
+            font-family: var(--font-family-base);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent-gold);
+        }
+
+        .form-textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="src/assets/images/logo.png" alt="BIGROCK JAPAN">
+            </a>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="dealers.html" class="nav-link">Dealer</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="contact-container">
+            <h1>Contact Us</h1>
+            <p style="margin-bottom: 30px; color: var(--color-text-secondary);">製品に関するご質問や、お取引に関するお問い合わせはこちらから。</p>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <label class="form-label">お名前 (Name)</label>
+                    <input type="text" class="form-input" placeholder="山田 太郎" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">メールアドレス (Email)</label>
+                    <input type="email" class="form-input" placeholder="email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">お問い合わせ内容 (Message)</label>
+                    <textarea class="form-textarea" placeholder="ご自由にご記入ください..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">送信する</button>
+            </form>
+
+            <div class="contact-info">
+                <p>BIGROCK JAPAN Support Team</p>
+                <p>Email: info@high-lander2.com</p>
+                <!-- <p>Tel: 03-xxxx-xxxx</p> -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 BIGROCK SPORTS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/js/main.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('お問い合わせありがとうございます。\n(これはデモサイトのため、実際には送信されません)');
+        });
+    </script>
+</body>
+
+</html>

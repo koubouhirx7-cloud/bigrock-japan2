@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BIGROCK GRAVEL HANDLEBAR | Premium Integrated Gravel Handlebar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@500;700;900&display=swap');
+
+        :root {
+            --bg: #000000;
+            --card-bg: #0a0a0a;
+            --fg: #ffffff;
+            --muted: #888888;
+            --line: #1a1a1a;
+            --accent: #d4af37;
+            --font-main: "Oswald", "Inter", sans-serif;
+            --font-body: "Inter", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-wrap {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 24px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--fg);
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .hero-pill {
+            display: inline-block;
+            border-left: 2px solid var(--accent);
+            padding-left: 12px;
+            font-size: 11px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .hero-h1 {
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1;
+            margin: 0 0 16px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .hero-h2 {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+            font-family: var(--font-body);
+            font-weight: 300;
+        }
+
+        .main-image-wrap {
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--line);
+            background: #fff;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .main-image-wrap img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Tech Section */
+        .tech-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-title {
+            font-size: 11px;
+            letter-spacing: 0.2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            display: block;
+            text-align: center;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            padding: 40px;
+            transition: 0.3s;
+        }
+
+        .tech-card:hover {
+            border-color: var(--accent);
+        }
+
+        .tech-card h3 {
+            font-size: 18px;
+            margin: 0 0 20px;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+        }
+
+        .tech-card p {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        /* Specs Table */
+        .specs-table-wrap {
+            margin-top: 80px;
+            padding: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-body);
+        }
+
+        .specs-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--line);
+            font-size: 14px;
+        }
+
+        .specs-table .label {
+            color: var(--muted);
+            font-weight: 700;
+            width: 30%;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            font-family: var(--font-main);
+        }
+
+        .specs-table .val {
+            font-weight: 400;
+            color: var(--fg);
+        }
+
+        /* CTA */
+        .btn-inquiry {
+            display: inline-block;
+            background: var(--fg);
+            color: var(--bg);
+            padding: 20px 40px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 40px;
+            transition: 0.3s;
+        }
+
+        .btn-inquiry:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav-wrap">
+            <a href="index.html"><img src="src/assets/images/logo.png" alt="BIGROCK" class="logo-img"></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="dealers.html">Dealer</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="hero-pill">Integrated Gravel Handlebar</span>
+                <h1 class="hero-h1">BIGROCK GRAVEL HANDLEBAR</h1>
+                <div class="hero-image">
+                    <div class="fade-loop-container">
+                        <!-- Default/Initial Image -->
+                        <img src="src/assets/images/handlebar-gravel-v2.jpg" alt="BIGROCK GRAVEL HANDLEBAR">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <span class="section-title">Features</span>
+                <div class="grid-2">
+                    <div class="tech-card">
+                        <h3>フルカーボン一体成形</h3>
+                        <p>ステムとハンドルを一体成形することで、グラベルの激しい路面状況でもびくともしない高剛性と、約350gという軽量さを両立しました。</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>ワイドフレア設計</h3>
+                        <p>大きめのフレア形状により、下ハンドル保持時の安定性が大幅に向上。荒れた路面の下り坂でも確実なコントロールを提供します。</p>
+                    </div>
+                </div>
+
+                <div class="specs-table-wrap">
+                    <h3 style="text-align: center; margin-bottom: 30px;">Specifications</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <td class="label">Price</td>
+                            <td class="val">¥55,000 (税込)</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Weight</td>
+                            <td class="val">約350g <small>(400mm × 100mm, 金属パーツ未装着時)</small></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Stem Length</td>
+                            <td class="val">80 / 90 / 100 / 110 / 120 mm</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Stem Angle</td>
+                            <td class="val">-8°</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Reach / Drop</td>
+                            <td class="val">75mm / 127mm</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Width (Hoods)</td>
+                            <td class="val">360 / 380 / 400 / 420 mm</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Width (Drops)</td>
+                            <td class="val">460 / 480 / 500 / 520 mm</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Compatibility</td>
+                            <td class="val">28.6mm / 31.8mm 対応</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="text-align: center; margin-top: 60px;">
+                    <a href="contact.html" class="btn-inquiry">製品を問い合わせる</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BIGROCK SPORTS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

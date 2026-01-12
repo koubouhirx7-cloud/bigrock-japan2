@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIGROCK JAPAN | Premium Carbon Bicycle Components</title>
+    <meta name="description" content="BIGROCK（ビッグロック）日本公式サイト。高品質、軽量、高性能なカーボンロードバイクフレーム、ホイール、ハンドルバーなどの自転車部品を提供します。">
+    <link rel="stylesheet" href="src/css/style.css">
+    <style>
+        /* Page Specific Styles */
+        .hero {
+            height: 85vh;
+            background: #D6DCE0 url('src/assets/images/hero-v12.jpg') no-repeat center center/contain;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--color-text-primary);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.8s;
+        }
+
+        .hero .btn {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.2s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px 0;
+        }
+
+        .category-card {
+            position: relative;
+            height: 400px;
+            background-color: var(--color-bg-tertiary);
+            overflow: hidden;
+            border-radius: 4px;
+            /* Slight round */
+            cursor: pointer;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 30px;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover .category-overlay {
+            transform: translateY(0);
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="src/assets/images/logo.png" alt="BIGROCK JAPAN">
+            </a>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="dealers.html" class="nav-link">Dealer</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Solid by design.<br>Strong by nature.</h1>
+            <p class="hero-subtitle">堅実にして、堅牢。</p>
+            <div class="hero-buttons">
+                <a href="products.html" class="btn btn-primary">製品を見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="section">
+        <div class="container">
+            <h2>Our Collections</h2>
+            <div class="categories-grid">
+                <a href="products.html#frame" class="category-card">
+                    <img src="src/assets/images/frameset-card.jpg" alt="Framesets">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Framesets</h3>
+                        <p>究極の軽さと剛性</p>
+                    </div>
+                </a>
+                <a href="products.html#cockpit" class="category-card">
+                    <img src="src/assets/images/cockpit-card.jpg" alt="Cockpit">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Cockpit</h3>
+                        <p>一体型ハンドル & ステム</p>
+                    </div>
+                </a>
+                <a href="products.html#accessory" class="category-card">
+                    <img src="src/assets/images/collection-others.jpg" alt="Others">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Others</h3>
+                        <p>サドル & アクセサリー</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Brief -->
+    <section class="section" style="background-color: var(--color-bg-secondary);">
+        <div class="container" style="display: flex; align-items: center; gap: 40px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2>About BIGROCK</h2>
+                <p>BIGROCKは2019年に中国で設立された、堅実にして堅牢なカーボンコンポーネントブランドです。</p>
+                <p>「より良い製品を、より確かな品質で届ける」をミッションに掲げ、試行錯誤と改善を繰り返しながら、世界中のサイクリストに信頼される製品を送り出しています。</p>
+                <a href="about.html" class="btn">詳しく知る</a>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <img src="src/assets/images/about-tech.png" alt="Bigrock Manufacturing" style="border-radius: 4px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div style="margin-bottom: 20px;">
+                <a href="index.html" class="logo" style="font-size: 1.5rem;">BIG<span>ROCK</span> JAPAN</a>
+            </div>
+            <p>&copy; 2026 BIGROCK SPORTS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/js/main.js"></script>
+</body>
+
+</html>

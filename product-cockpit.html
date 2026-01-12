@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BIGROCK V2 INTEGRATED | UNLEASH YOUR POTENTIAL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@500;700;900&display=swap');
+
+        /* サイトイメージに基づいた漆黒のモノトーン設定 */
+        :root {
+            --bg: #000000;
+            --card-bg: #0a0a0a;
+            --fg: #ffffff;
+            --muted: #888888;
+            --line: #1a1a1a;
+            --font-main: "Oswald", "Inter", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 既存ヘッダーの再現 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-wrap {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 24px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+
+        /* ロゴを白抜きに */
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--fg);
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ccc;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* メインビジュアル */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hero-pill {
+            display: inline-block;
+            border-left: 2px solid #fff;
+            padding-left: 12px;
+            font-size: 11px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .hero-h1 {
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1;
+            margin: 0 0 32px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .hero-img-wrap {
+            margin-top: 40px;
+            border: 1px solid var(--line);
+            background: #050505;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .hero-img-wrap img {
+            width: 100%;
+            display: block;
+            filter: grayscale(100%);
+            transition: 0.5s;
+            object-fit: cover;
+        }
+
+        .hero-img-wrap img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        /* 実測値セクション */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 80px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .stat-img {
+            aspect-ratio: 4/3;
+            background: #111;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .stat-card:hover .stat-img img {
+            transform: scale(1.05);
+        }
+
+        .stat-content {
+            padding: 24px;
+        }
+
+        .stat-content h3 {
+            margin: 0 0 8px;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+
+        .stat-content p {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* スペック・購入ボタン */
+        .order-section {
+            margin: 100px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .order-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .spec-table td {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .label {
+            color: var(--muted);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .val {
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .btn-buy {
+            display: block;
+            background: #ffffff;
+            color: #000000;
+            padding: 24px;
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 16px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-buy:hover {
+            background: #cccccc;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+        }
+
+        /* Slider Styles */
+        .hero-slider {
+            position: relative;
+            background: #000000;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 40px;
+            aspect-ratio: 3/2;
+        }
+
+        .hero-slider .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slider .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            background: #000;
+        }
+
+        .hero-slider .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .hero-slider .ctrl {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 2;
+            transition: background 0.3s;
+            border-radius: 4px;
+        }
+
+        .hero-slider .ctrl:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-slider .prev {
+            left: 20px;
+        }
+
+        .hero-slider .next {
+            right: 20px;
+        }
+
+        .hero-slider .dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .hero-slider .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+        }
+
+        .hero-slider .dot.active {
+            background: #fff;
+        }
+
+        /* Related Products Section */
+        .related-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .related-section h2 {
+            font-size: 24px;
+            letter-spacing: 0.2em;
+            text-align: center;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .related-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .related-card:hover {
+            border-color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .related-img {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: #050505;
+        }
+
+        .related-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .related-card:hover .related-img img {
+            transform: scale(1.05);
+        }
+
+        .related-info {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .related-info h3 {
+            font-size: 16px;
+            margin: 0 0 10px;
+            letter-spacing: 0.05em;
+        }
+
+        .related-info p {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+
+<body>
+
+    <!-- Standard Header Structure for Compatibility -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="src/assets/images/logo.png" alt="BIGROCK JAPAN">
+            </a>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="dealers.html" class="nav-link">Dealer</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <span class="hero-pill">Unleash Your Potential</span>
+            <h1 class="hero-h1">BIGROCK V2<br>INTEGRATED</h1>
+            <p
+                style="color:var(--muted); font-size: 18px; max-width: 700px; margin: 0 auto 40px; font-family: 'Inter', sans-serif;">
+                限界を越える。カーボンテクノロジーの極致へ。
+            </p>
+            <div class="hero-slider" id="heroSlider">
+                <div class="slides">
+                    <div class="slide active">
+                        <img src="src/assets/images/cockpit-main.jpg" alt="BIGROCK V2 Main View">
+                    </div>
+                    <div class="slide">
+                        <img src="src/assets/images/cockpit-angle.jpg" alt="BIGROCK V2 Angle View">
+                    </div>
+                    <div class="slide">
+                        <img src="src/assets/images/cockpit-profile.jpg" alt="BIGROCK V2 Profile View">
+                    </div>
+                    <div class="slide">
+                        <img src="src/assets/images/cockpit-detail-mount.jpg" alt="BIGROCK V2 Mount Detail">
+                    </div>
+                </div>
+                <button class="ctrl prev" id="sliderPrev">❮</button>
+                <button class="ctrl next" id="sliderNext">❯</button>
+                <div class="dots" id="sliderDots">
+                    <button class="dot active" data-index="0"></button>
+                    <button class="dot" data-index="1"></button>
+                    <button class="dot" data-index="2"></button>
+                    <button class="dot" data-index="3"></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <a href="contact.html" class="stat-card" style="display:block; text-decoration:none; color:inherit;">
+                <div class="stat-img"><img src="src/assets/images/cockpit-main.jpg" alt="Weight Handlebar"></div>
+                <div class="stat-content">
+                    <h3>LIGHTWEIGHT</h3>
+                    <p>400mm x 90mm 実測重量 322.7g。剛性を維持したまま、徹底的な軽量化を追求。</p>
+                </div>
+            </a>
+            <a href="contact.html" class="stat-card" style="display:block; text-decoration:none; color:inherit;">
+                <div class="stat-img"><img src="src/assets/images/cockpit-detail-mount.jpg" alt="Weight Mounts"></div>
+                <div class="stat-content">
+                    <h3>SYSTEM WEIGHT</h3>
+                    <p>専用コンピュータマウント・ボルト一式で約50.0g。無駄のない統合設計。</p>
+                </div>
+            </a>
+            <a href="contact.html" class="stat-card" style="display:block; text-decoration:none; color:inherit;">
+                <div class="stat-img"><img src="src/assets/images/cockpit-angle.jpg" alt="TREK Installation"></div>
+                <div class="stat-content">
+                    <h3>PURE AESTHETICS</h3>
+                    <p>TREK Emonda等の最新フレームへの完全内装に対応。コックピットの極限のクリーンさを実現。</p>
+                </div>
+            </a>
+        </section>
+
+        <section class="order-section">
+            <div>
+                <h2 style="font-size: 24px; letter-spacing: 0.1em; margin-bottom: 30px;">SPECIFICATIONS</h2>
+                <table class="spec-table">
+                    <tr>
+                        <td class="label">Handle Width</td>
+                        <td class="val">340 / 360 / 380 / 400 / 420 mm</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Stem Length</td>
+                        <td class="val">70 - 150 mm / -8°</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Steerer</td>
+                        <td class="val">OD1 (28.6mm) / OD2 (31.8mm)</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Material</td>
+                        <td class="val">T800 Carbon Fiber</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="background: var(--card-bg); padding: 40px; border: 1px solid var(--line);">
+                <p style="font-size: 12px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px;">TOTAL
+                    CONTROL</p>
+                <h3 style="font-size: 32px; margin: 0 0 24px;">BIGROCK V2</h3>
+                <a href="contact.html" class="btn-buy">製品を問い合わせる</a>
+                <p
+                    style="font-size: 11px; color: var(--muted); margin-top: 24px; line-height: 1.4; font-family: 'Inter', sans-serif;">
+                    ※OD1/OD2アダプター、専用トップキャップ、マウント、スペーサー付属。
+                </p>
+            </div>
+        </section>
+
+        <section class="related-section">
+            <h2>Related Products</h2>
+            <div class="related-grid">
+                <a href="contact.html" class="related-card">
+                    <div class="related-img">
+                        <img src="src/assets/images/cockpit-detail-mount.jpg" alt="V2 Computer Mount">
+                    </div>
+                    <div class="related-info">
+                        <h3>V2 COMPUTER MOUNT</h3>
+                        <p>V2ハンドルバー専用設計の軽量・高剛性マウント。Garmin / Wahoo / GoPro対応。</p>
+                    </div>
+                </a>
+                <a href="contact.html" class="related-card">
+                    <div class="related-img">
+                        <img src="src/assets/images/cockpit-angle.jpg" alt="Integration Spacer Kit">
+                    </div>
+                    <div class="related-info">
+                        <h3>INTEGRATION SPACER KIT</h3>
+                        <p>様々なフレーム形状に適合する、専用スペーサーキット。美しいシルエットを実現。</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div style="margin-bottom: 20px;">
+                    <a href="index.html" class="logo"
+                        style="font-size: 1.5rem; justify-content: center;">BIG<span>ROCK</span> JAPAN</a>
+                </div>
+                <p>&copy; 2026 BIGROCK SPORTS. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Hero Gallery Slider
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('heroSlider');
+            if (!slider) return;
+
+            const slides = slider.querySelectorAll('.slide');
+            const dots = slider.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('sliderPrev');
+            const nextBtn = document.getElementById('sliderNext');
+
+            let current = 0;
+            const total = slides.length;
+            let autoSlideInterval;
+
+            function showSlide(index) {
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+
+                // Wrap around
+                if (index >= total) current = 0;
+                else if (index < 0) current = total - 1;
+                else current = index;
+
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            function next() { showSlide(current + 1); }
+            function prev() { showSlide(current - 1); }
+
+            // Event Listeners
+            nextBtn.addEventListener('click', () => {
+                next();
+                resetTimer();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prev();
+                resetTimer();
+            });
+
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('click', () => {
+                    showSlide(idx);
+                    resetTimer();
+                });
+            });
+
+            // Autoplay 5s
+            function startTimer() {
+                autoSlideInterval = setInterval(next, 5000);
+            }
+
+            function resetTimer() {
+                clearInterval(autoSlideInterval);
+                startTimer();
+            }
+
+            startTimer();
+        });
+    </script>
+    <script src="src/js/main.js"></script>
+</body>
+
+</html>

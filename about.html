@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | BIGROCK JAPAN</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <style>
+        .about-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+                url('https://images.unsplash.com/photo-1599852233061-00e964b49202?q=80&w=2669&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+            text-align: left;
+        }
+
+        .tech-item h3 {
+            color: var(--color-accent-gold);
+            margin-bottom: 15px;
+        }
+
+        /* Folding Sections */
+        details {
+            border-top: 1px solid var(--line);
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        details[open] .details-content {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="src/assets/images/logo.png" alt="BIGROCK JAPAN">
+            </a>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li><a href="dealers.html" class="nav-link">Dealer</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="container">
+            <h1>About BIGROCK</h1>
+            <p>堅実にして、堅牢。</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container about-content">
+            <h2>BIGROCK</h2>
+            <p>大石体育有限公司（BIGROCK）は、2019年に中国で創立されました。<br>
+                世界的なパンデミックの始まりと重なり、経済活動が停滞し、<br>
+                多くの制約が生まれた困難な時代の中で、<br>
+                一つの自転車ブランドとして歩みをスタートさせました。</p>
+
+            <p>BIGROCKは、<br>
+                従来の「一般的なスポーツ用品ブランド」とは一線を画し、<br>
+                中〜高級レンジの自転車市場を見据えた、専門性の高い若いブランドとして誕生しました。<br>
+                フレーム、コックピット、サドル、アクセサリーに至るまで、<br>
+                幅広いプロフェッショナル向け自転車パーツを展開し、<br>
+                現在では中国、国内外の市場へと着実に広がりを見せています。</p>
+
+            <p>現在では自転車市場において広く知られる存在となり、<br>
+                確かな立ち位置を築いています。</p>
+
+            <p>この成果は、<br>
+                決して近道ではなく、<br>
+                試行錯誤と改善を繰り返しながら、<br>
+                「より良い製品を、より確かな品質で届ける」ことに真摯に向き合ってきた結果です。</p>
+
+            <p>私たちの製品は、<br>
+                必ずしも奇をてらうものではありません。<br>
+                しかし、ブランド名(BIGROCK)が示す通り、堅実にして、堅牢。を信条としています。</p>
+
+            <p>言葉よりも行動を。<br>
+                BIGROCKは、常に走り続けます。</p>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h3>Premium Carbon Materials</h3>
+                    <p>韓国・暁星（Hyosung）、日本・東レ（Toray）、日本・三菱ケミカルの各カーボン素材を使用。モデルに応じて最適な素材を選択・検証し、最高峰のパフォーマンスを追求しています。</p>
+                </div>
+                <div class="tech-item">
+                    <h3>EPS Molding</h3>
+                    <p>EPS（発泡スチロール）芯材を用いた成形技術により、フレーム内部のシワを排除。内側まで美しく、強度に優れたフレームを製造します。</p>
+                </div>
+                <div class="tech-item">
+                    <h3>Rigorous Testing</h3>
+                    <p>全ての製品は、ISO 4210規格を超える社内基準でテストされます。疲労試験、衝撃試験をクリアしたものだけが出荷されます。</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>
+                    <h2>日本国内における販売ポリシーについて</h2>
+                </summary>
+                <div class="details-content" style="padding-top: 20px;">
+                    <p>ハイランダーが管理する BIGROCK 日本国内向け製品は、<br>
+                        一般のお客様への直接販売（直販）は行っておりません。</p>
+
+                    <p>BIGROCK 製品は、<br>
+                        正規取扱販売店様からお客様への販売に限って提供しています。</p>
+
+                    <p>その理由は、<br>
+                        BIGROCK のフレームやコックピットなどの カーボン製品は組み立てに高い専門性が求められ、<br>
+                        特にフル内装ハンドルや一体型パーツは、<br>
+                        適切な知識・経験・専用工具がなければ<br>
+                        安全性や性能を十分に発揮できないためです。</p>
+
+                    <div
+                        style="background: var(--card-bg); padding: 30px; margin-top: 30px; border: 1px solid var(--line);">
+                        <h3 style="margin-top: 0; color: #ff6b6b; font-size: 1rem;">ご注意：海外ECサイトでの購入について</h3>
+                        <p style="margin-bottom: 0px; font-size: 0.9em;">AliExpress 等の海外ECサイトで販売されている BIGROCK 製品は、<br>
+                            ハイランダーおよび日本正規流通とは一切関係ありません。</p>
+                        <p style="margin-bottom: 0px; margin-top: 15px; font-size: 0.9em;">それらの製品については、<br>
+                            日本国内での保証・サポート・組付トラブル対応等は一切行っておりませんので、<br>
+                            あらかじめご了承ください。</p>
+                        <p style="margin-top: 20px; font-weight: bold; color: var(--fg);">安全で確実な使用のため、<br>
+                            必ず 日本国内の正規取扱販売店 を通じてお求めください。</p>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>
+                    <h2>日本での運営会社について</h2>
+                </summary>
+                <div class="details-content" style="padding-top: 20px;">
+                    <p>BIGROCK 製品の日本国内での運営および取扱いは、<br>
+                        <strong>ハイランダー／里山の自転車店</strong> が担当しています。
+                    </p>
+                    <p>同店では、フレーム・コックピット・サドル・アクセサリーなど<br>
+                        BIGROCK 製品を実際にご覧いただき、試すことが可能です。<br>
+                        用途や体格に合わせたご相談にも対応しています。</p>
+
+                    <div
+                        style="background: var(--card-bg); padding: 30px; margin-top: 30px; border: 1px solid var(--line);">
+                        <h3 style="margin-top: 0;">ハイランダー/里山の自転車店 (来店予約制)</h3>
+                        <p style="margin-bottom: 0px;">〒669-2222<br>兵庫県丹波篠山市味間南558-3</p>
+                        <p style="margin-bottom: 0px;">TEL: 079-598-2334 / FAX: 079-556-9561</p>
+                        <p style="margin-bottom: 0px;">HP: <a href="https://high-lander2.com/" target="_blank"
+                                style="color: #fff;">https://high-lander2.com/</a></p>
+                        <p style="margin-bottom: 20px;">E-Mail: <a href="mailto:info@high-lander2.com"
+                                style="color: #fff;">info@high-lander2.com</a></p>
+                        <p style="margin-bottom: 10px;">公式LINEからのお問い合わせがスムーズです。<br>
+                            <a href="https://lin.ee/BLZhN9n" target="_blank"
+                                style="color: var(--color-accent-gold);">https://lin.ee/BLZhN9n</a>
+                        </p>
+                        <p style="font-size: 0.9em; color: var(--muted); margin-top: 20px;">BIGROCK
+                            製品にご興味のある方は、ぜひ店舗にて実物をご確認ください。</p>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>
+                    <h2>卸売・業務取引をご希望の方へ</h2>
+                </summary>
+                <div class="details-content" style="padding-top: 20px;">
+                    <p>BIGROCK 製品の 卸売・業務取引をご希望の販売店様・事業者様は、<br>
+                        下記までお気軽にお問い合わせください。</p>
+
+                    <div
+                        style="background: var(--card-bg); padding: 30px; margin-top: 30px; border: 1px solid var(--line);">
+                        <h3 style="margin-top: 0;">ハイランダー／里山の自転車店（BIGROCK 日本運営）</h3>
+                        <p>E-Mail：<a href="mailto:info@high-lander2.com" style="color: #fff;">info@high-lander2.com</a>
+                        </p>
+                        <p>公式LINEでのお問い合わせ：<a href="https://lin.ee/BLZhN9n" target="_blank"
+                                style="color: var(--color-accent-gold);">https://lin.ee/BLZhN9n</a></p>
+                        <p style="font-size: 0.9em; color: var(--muted); margin-top: 20px;">※卸条件・導入相談など、順次ご案内いたします。</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 BIGROCK SPORTS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/js/main.js"></script>
+</body>
+
+</html>

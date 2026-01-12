@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BIGROCK 001 Aero | Aerodynamic Performance Road Frame</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@500;700;900&display=swap');
+
+        :root {
+            --bg: #000000;
+            --card-bg: #0a0a0a;
+            --fg: #ffffff;
+            --muted: #888888;
+            --line: #1a1a1a;
+            --accent: #d4af37;
+            --font-main: "Oswald", "Inter", sans-serif;
+            --font-body: "Inter", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-wrap {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 24px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--fg);
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .hero-pill {
+            display: inline-block;
+            border-left: 2px solid var(--accent);
+            padding-left: 12px;
+            font-size: 11px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .hero-h1 {
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1;
+            margin: 0 0 16px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .hero-h2 {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+            font-family: var(--font-body);
+            font-weight: 300;
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            background: #000;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 40px;
+            aspect-ratio: 16/9;
+        }
+
+        .hero-slider .slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-slider .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slider .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .hero-slider .ctrl {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 15px 10px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .hero-slider .ctrl:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .hero-slider .prev {
+            left: 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .hero-slider .next {
+            right: 0;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .hero-slider .dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .hero-slider .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: 0.3s;
+        }
+
+        .hero-slider .dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        /* UCI Badge */
+        .uci-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 2px;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+        .uci-logo {
+            height: 18px;
+            width: auto;
+        }
+
+        /* Geometry Table */
+        .geometry-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--line);
+            background: #000;
+        }
+
+        .geo-img-wrap {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .geo-img-wrap img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .geo-table-container {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+        }
+
+        .geo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-body);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .geo-table th,
+        .geo-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid var(--line);
+        }
+
+        .geo-table th {
+            background: var(--card-bg);
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        .geo-table td:first-child {
+            text-align: left;
+            background: var(--card-bg);
+            color: var(--accent);
+            font-weight: 700;
+            position: sticky;
+            left: 0;
+        }
+
+        .geo-table tr:hover td {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* Specs Grid */
+        .specs-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-title {
+            font-size: 11px;
+            letter-spacing: 0.2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            display: block;
+            text-align: center;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-block h3 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+            color: #fff;
+        }
+
+        .content-block p {
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .content-block ul {
+            padding-left: 20px;
+            color: var(--muted);
+            font-family: var(--font-body);
+            font-size: 15px;
+        }
+
+        .content-block li {
+            margin-bottom: 8px;
+        }
+
+        /* Highlight Cards */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .highlight-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            padding: 40px;
+        }
+
+        .highlight-card h4 {
+            color: var(--accent);
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .highlight-card p {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* Spec Table */
+        .spec-table-wrap {
+            margin-top: 80px;
+            padding: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-body);
+        }
+
+        .spec-table th,
+        .spec-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .spec-table th {
+            font-family: var(--font-main);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            font-size: 12px;
+            width: 30%;
+        }
+
+        .spec-table td {
+            color: var(--fg);
+        }
+
+        /* Color Section */
+        .color-section {
+            padding: 80px 0;
+            background: #050505;
+            border-top: 1px solid var(--line);
+        }
+
+        .color-img-wrap {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .color-img-wrap img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .btn-inquiry {
+            display: inline-block;
+            background: var(--fg);
+            color: var(--bg);
+            padding: 20px 48px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            transition: 0.3s;
+        }
+
+        .btn-inquiry:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav-wrap">
+            <a href="index.html"><img src="src/assets/images/logo.png" alt="BIGROCK" class="logo-img"></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="dealers.html">Dealer</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="hero-pill">BIGROCK Aero Series</span>
+                <h1 class="hero-h1">BIGROCK 001/AERO</h1>
+                <h2 class="hero-h2">2年の歳月をかけた、究極のエアロロードフレーム</h2>
+                <div class="uci-badge">
+                    <img src="src/assets/images/uci-logo.svg" alt="UCI" class="uci-logo">
+                    UCI Approved
+                </div>
+                <div class="hero-slider" id="heroSlider">
+                    <div class="slides">
+                        <div class="slide active">
+                            <img src="src/assets/images/frame-001-aero.jpg" alt="BIGROCK 001 Aero Frame">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-aero-001-gallery-1.jpg" alt="BIGROCK 001 Aero Detail 1">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-aero-001-gallery-2.jpg" alt="BIGROCK 001 Aero Detail 2">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-aero-001-gallery-3.jpg" alt="BIGROCK 001 Aero Detail 3">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-aero-001-gallery-4.jpg" alt="BIGROCK 001 Aero Detail 4">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/frame-aero-001-gallery-5.jpg" alt="BIGROCK 001 Aero Detail 5">
+                        </div>
+                    </div>
+                    <button class="ctrl prev" id="sliderPrev">&#10094;</button>
+                    <button class="ctrl next" id="sliderNext">&#10095;</button>
+                    <div class="dots">
+                        <button class="dot active" data-index="0"></button>
+                        <button class="dot" data-index="1"></button>
+                        <button class="dot" data-index="2"></button>
+                        <button class="dot" data-index="3"></button>
+                        <button class="dot" data-index="4"></button>
+                        <button class="dot" data-index="5"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="specs-section">
+            <div class="container">
+                <span class="section-title">Development Concept</span>
+                <div class="grid-2">
+                    <div class="content-block">
+                        <h3>「速さ」と「信頼性」の両立</h3>
+                        <p>本モデルは、単なる軽量化や価格競争を目的とせず、品質の安定性・実走性能・長期使用に耐える完成度を最優先に設計されています。28項目にわたるディテールの徹底的なブラッシュアップを実施しました。
+                        </p>
+                        <p>素材・構造・空力・剛性・伝達効率まで、すべてを総合的に見直し、BIGROCKの思想である「堅実にして、堅牢。」を体現するエアロロードとして仕上げています。</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Aero Dynamics</h3>
+                        <p>一体化された流線型デザインを採用。実走行に直結する、実効性重視のエアロ設計です。</p>
+                        <ul>
+                            <li>弧を描くヘッドチューブとフロントフォークが滑らかに連続</li>
+                            <li>気流を乱さず、スムーズに空気を後方へ受け流す</li>
+                            <li>シートチューブはホイール形状に沿う設計とし、空気抵抗の干渉を低減</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-grid">
+                    <div class="highlight-card">
+                        <h4>Premium Material</h4>
+                        <p>韓国・暁星（Hyosung）製カーボンファイバーを採用。T800とT1000の高強度・高弾性素材を適材適所に配置し、軽量化と高剛性を同時に達成。</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Transmission Efficiency</h4>
+                        <p>リア三角の軸距（チェーンステー長）を短く設定。駆動ロスを低減し、ペダリング効率とクイックなハンドリングを実現。</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Custom Fitting</h4>
+                        <p>ストレート形状とオフセット形状の2種類のシートポストが標準付属。ライダーの体格や用途に合わせたきめ細かな調整が可能です。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="color-section">
+            <div class="container">
+                <span class="section-title">Color Variation</span>
+                <h3 style="text-align: center; font-size: 24px;">豊富なカラーバリエーション</h3>
+                <div class="color-img-wrap">
+                    <img src="src/assets/images/frame-001-colors.png" alt="BIGROCK 001 Colors">
+                </div>
+            </div>
+        </section>
+
+        <section class="geometry-section">
+            <div class="container">
+                <span class="section-title">Geometry</span>
+                <div class="geo-img-wrap">
+                    <img src="src/assets/images/frame-001-geometry.png" alt="BIGROCK 001 Geometry">
+                </div>
+
+                <div class="geo-table-container">
+                    <table class="geo-table">
+                        <thead>
+                            <tr>
+                                <th>Frame Size</th>
+                                <th>46</th>
+                                <th>49</th>
+                                <th>51</th>
+                                <th>53</th>
+                                <th>55</th>
+                                <th>57</th>
+                                <th>59</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Seat Tube (ST)</td>
+                                <td>430</td>
+                                <td>450</td>
+                                <td>470</td>
+                                <td>480</td>
+                                <td>490</td>
+                                <td>500</td>
+                                <td>510</td>
+                            </tr>
+                            <tr>
+                                <td>Top Tube (TT)</td>
+                                <td>510.64</td>
+                                <td>522.71</td>
+                                <td>535.28</td>
+                                <td>542.55</td>
+                                <td>550.91</td>
+                                <td>557</td>
+                                <td>565</td>
+                            </tr>
+                            <tr>
+                                <td>Head Tube (HT)</td>
+                                <td>104</td>
+                                <td>109</td>
+                                <td>120</td>
+                                <td>130</td>
+                                <td>137</td>
+                                <td>148</td>
+                                <td>156</td>
+                            </tr>
+                            <tr>
+                                <td>Seat Angle (STA)</td>
+                                <td>74.4</td>
+                                <td>74</td>
+                                <td>73.7</td>
+                                <td>73.7</td>
+                                <td>73.4</td>
+                                <td>73.4</td>
+                                <td>73.0</td>
+                            </tr>
+                            <tr>
+                                <td>Head Angle (HTA)</td>
+                                <td>70.5</td>
+                                <td>71.4</td>
+                                <td>72.0</td>
+                                <td>72.5</td>
+                                <td>72.8</td>
+                                <td>72.8</td>
+                                <td>73.2</td>
+                            </tr>
+                            <tr>
+                                <td>BB Drop (BD)</td>
+                                <td>72</td>
+                                <td>72</td>
+                                <td>72</td>
+                                <td>72</td>
+                                <td>72</td>
+                                <td>72</td>
+                                <td>72</td>
+                            </tr>
+                            <tr>
+                                <td>Fork Length (FL)</td>
+                                <td>373</td>
+                                <td>373</td>
+                                <td>373</td>
+                                <td>373</td>
+                                <td>373</td>
+                                <td>373</td>
+                                <td>373</td>
+                            </tr>
+                            <tr>
+                                <td>Front Rake (FR)</td>
+                                <td>43</td>
+                                <td>43</td>
+                                <td>43</td>
+                                <td>43</td>
+                                <td>43</td>
+                                <td>43</td>
+                                <td>43</td>
+                            </tr>
+                            <tr>
+                                <td>Front Center (FC)</td>
+                                <td>573.3</td>
+                                <td>574.03</td>
+                                <td>578.74</td>
+                                <td>581.74</td>
+                                <td>584.34</td>
+                                <td>590.55</td>
+                                <td>592.45</td>
+                            </tr>
+                            <tr>
+                                <td>Rear Center (RC)</td>
+                                <td>406</td>
+                                <td>406</td>
+                                <td>406</td>
+                                <td>406</td>
+                                <td>408</td>
+                                <td>408</td>
+                                <td>408</td>
+                            </tr>
+                            <tr>
+                                <td>Wheel Base (WB)</td>
+                                <td>968.32</td>
+                                <td>969.06</td>
+                                <td>973.81</td>
+                                <td>976.83</td>
+                                <td>981.48</td>
+                                <td>987.74</td>
+                                <td>989.66</td>
+                            </tr>
+                            <tr>
+                                <td>Stack</td>
+                                <td>507.29</td>
+                                <td>515.11</td>
+                                <td>527.58</td>
+                                <td>538.79</td>
+                                <td>546.48</td>
+                                <td>556.98</td>
+                                <td>565.99</td>
+                            </tr>
+                            <tr>
+                                <td>Reach</td>
+                                <td>369</td>
+                                <td>375</td>
+                                <td>381</td>
+                                <td>385</td>
+                                <td>388</td>
+                                <td>391</td>
+                                <td>394</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="specs-section">
+            <div class="container">
+                <span class="section-title">Technical Specifications</span>
+                <div class="spec-table-wrap">
+                    <table class="spec-table">
+                        <tbody>
+                            <tr>
+                                <th>フレームサイズ</th>
+                                <td>46 / 49 / 51 / 53 / 55 / 57 / 59</td>
+                            </tr>
+                            <tr>
+                                <th>フレーム重量</th>
+                                <td>49サイズ：920g (金属パーツ未装着時)</td>
+                            </tr>
+                            <tr>
+                                <th>フロントフォーク重量</th>
+                                <td>350g (金属パーツ未装着時)</td>
+                            </tr>
+                            <tr>
+                                <th>エンド規格 (OLD)</th>
+                                <td>フロント：100mm / リア：142mm (ディスクブレーキ)</td>
+                            </tr>
+                            <tr>
+                                <th>ルーティング</th>
+                                <td>フル内装対応 (全内走线)</td>
+                            </tr>
+                            <tr>
+                                <th>カーボン素材</th>
+                                <td>Hyosung T800 / T1000</td>
+                            </tr>
+                            <tr>
+                                <th>付属品</th>
+                                <td>シートポスト2種 (ストレート / オフセット)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h3 style="font-size: 32px; margin-bottom: 40px;">BIGROCK 001/AERO を手に入れる</h3>
+                <a href="contact.html" class="btn-inquiry">製品を問い合わせる</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BIGROCK SPORTS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('heroSlider');
+            if (!slider) return;
+
+            const slides = slider.querySelectorAll('.slide');
+            const dots = slider.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('sliderPrev');
+            const nextBtn = document.getElementById('sliderNext');
+
+            let current = 0;
+            const total = slides.length;
+
+            function showSlide(index) {
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+
+                if (index >= total) current = 0;
+                else if (index < 0) current = total - 1;
+                else current = index;
+
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(current + 1);
+            }
+
+            function prevSlide() {
+                showSlide(current - 1);
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+
+            // Auto play
+            setInterval(nextSlide, 5000);
+        });
+    </script>
+</body>
+
+</html>

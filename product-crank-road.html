@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BIGROCK Road Carbon Crank | Ultra-Light Carbon Fiber Crankset</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@500;700;900&display=swap');
+
+        :root {
+            --bg: #000000;
+            --card-bg: #0a0a0a;
+            --fg: #ffffff;
+            --muted: #888888;
+            --line: #1a1a1a;
+            --accent: #d4af37;
+            --font-main: "Oswald", "Inter", sans-serif;
+            --font-body: "Inter", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-wrap {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 24px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--fg);
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .hero-pill {
+            display: inline-block;
+            border-left: 2px solid var(--accent);
+            padding-left: 12px;
+            font-size: 11px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .hero-h1 {
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1;
+            margin: 0 0 16px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .hero-h2 {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+            font-family: var(--font-body);
+            font-weight: 300;
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 40px;
+            aspect-ratio: 4/3;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-slider .slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-slider .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slider .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-slider .ctrl {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 15px 10px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .hero-slider .ctrl:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .hero-slider .prev {
+            left: 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .hero-slider .next {
+            right: 0;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .hero-slider .dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .hero-slider .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: 0.3s;
+        }
+
+        .hero-slider .dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        /* Tech Section */
+        .tech-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-title {
+            font-size: 11px;
+            letter-spacing: 0.2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            display: block;
+            text-align: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            padding: 40px;
+            transition: 0.3s;
+        }
+
+        .tech-card:hover {
+            border-color: var(--accent);
+        }
+
+        .tech-card h3 {
+            font-size: 18px;
+            margin: 0 0 20px;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+        }
+
+        .tech-card p {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        /* Specs Table */
+        .specs-table-wrap {
+            margin-top: 80px;
+            padding: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-body);
+        }
+
+        .specs-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--line);
+            font-size: 14px;
+        }
+
+        .specs-table .label {
+            color: var(--muted);
+            font-weight: 700;
+            width: 30%;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            font-family: var(--font-main);
+        }
+
+        .specs-table .val {
+            font-weight: 400;
+            color: var(--fg);
+        }
+
+        /* CTA */
+        .btn-inquiry {
+            display: inline-block;
+            background: var(--fg);
+            color: var(--bg);
+            padding: 20px 40px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 40px;
+            transition: 0.3s;
+        }
+
+        .btn-inquiry:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav-wrap">
+            <a href="index.html"><img src="src/assets/images/logo.png" alt="BIGROCK" class="logo-img"></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="dealers.html">Dealer</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="hero-pill">Road Carbon Crank</span>
+                <h1 class="hero-h1">BIGROCK Road Crank</h1>
+                <h2 class="hero-h2">究極の軽量性と駆動効率を追求した、フルカーボン・ロードクランク。</h2>
+
+                <div class="hero-slider" id="heroSlider">
+                    <div class="slides">
+                        <div class="slide active">
+                            <img src="src/assets/images/crank-road-1.jpg" alt="Crank Main View">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/crank-road-gallery-1.jpg" alt="Crank New 1">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/crank-road-gallery-2.jpg" alt="Crank New 2">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/crank-road-2.jpg" alt="Crank Box Set">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/crank-road-3.jpg" alt="Crank Box Angle">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/crank-road-4.jpg" alt="Crank Installed">
+                        </div>
+                        <div class="slide">
+                            <img src="src/assets/images/crank-road-5.jpg" alt="Crank Detail">
+                        </div>
+                    </div>
+                    <button class="ctrl prev" id="sliderPrev">&#10094;</button>
+                    <button class="ctrl next" id="sliderNext">&#10095;</button>
+                    <div class="dots">
+                        <button class="dot active" data-index="0"></button>
+                        <button class="dot" data-index="1"></button>
+                        <button class="dot" data-index="2"></button>
+                        <button class="dot" data-index="3"></button>
+                        <button class="dot" data-index="4"></button>
+                        <button class="dot" data-index="5"></button>
+                        <button class="dot" data-index="6"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <span class="section-title">Features</span>
+                <div class="grid-3">
+                    <div class="tech-card">
+                        <h3>クラス最軽量 353g</h3>
+                        <p>170mmサイズで約353g（±5g）を達成。異次元の軽さが、ヒルクライムにおける圧倒的なアドバンテージと鋭い加速を生み出します。</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>高剛性チタン軸</h3>
+                        <p>スピンドルには軽量かつ硬質なチタン合金を採用。パワーをロスなく推進力へと変換する高い駆動効率を実現しています。</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>高い汎用性</h3>
+                        <p>3ボルト(SRAM規格)に対応し、110 BCD スパイダーとの互換性も確保。幅広いギア構成に対応可能です。</p>
+                    </div>
+                </div>
+
+                <div class="specs-table-wrap">
+                    <h3 style="text-align: center; margin-bottom: 30px;">Specifications</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <td class="label">Price</td>
+                            <td class="val">¥45,000 (税込)</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Material</td>
+                            <td class="val">Full Carbon Fiber Arms / Titanium Spindle</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Weight</td>
+                            <td class="val">353g ±5g <small>(170mm, without spider/rings)</small></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Crank Length</td>
+                            <td class="val">160 / 165 / 167.5 / 170 / 172.5 mm</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Spindle Diameter</td>
+                            <td class="val">24mm</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Mount Standard</td>
+                            <td class="val">3-Bolt (SRAM style) / 110 BCD Spider Compatibility</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Q-Factor</td>
+                            <td class="val">140mm</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="text-align: center; margin-top: 60px;">
+                    <a href="contact.html" class="btn-inquiry">製品を問い合わせる</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BIGROCK SPORTS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('heroSlider');
+            if (!slider) return;
+
+            const slides = slider.querySelectorAll('.slide');
+            const dots = slider.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('sliderPrev');
+            const nextBtn = document.getElementById('sliderNext');
+
+            let current = 0;
+            const total = slides.length;
+
+            function showSlide(index) {
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+
+                if (index >= total) current = 0;
+                else if (index < 0) current = total - 1;
+                else current = index;
+
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(current + 1);
+            }
+
+            function prevSlide() {
+                showSlide(current - 1);
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+
+            // Auto play
+            setInterval(nextSlide, 5000);
+        });
+    </script>
+</body>
+
+</html>
