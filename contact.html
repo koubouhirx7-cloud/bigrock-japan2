@@ -90,18 +90,23 @@
             <h1>Contact Us</h1>
             <p style="margin-bottom: 30px; color: var(--color-text-secondary);">製品に関するご質問や、お取引に関するお問い合わせはこちらから。</p>
 
-            <form id="contactForm">
+            <form id="contactForm" action="https://formsubmit.co/info@high-lander2.com" method="POST">
+                <!-- Formsubmit.co Configuration -->
+                <input type="hidden" name="_subject" value="New Contact from BIGROCK Website">
+                <input type="hidden" name="_next" value="https://rideblink.net/console/bigrock/contact.html">
+                <input type="hidden" name="_captcha" value="false">
+
                 <div class="form-group">
                     <label class="form-label">お名前 (Name)</label>
-                    <input type="text" class="form-input" placeholder="山田 太郎" required>
+                    <input type="text" name="name" class="form-input" placeholder="山田 太郎" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label">メールアドレス (Email)</label>
-                    <input type="email" class="form-input" placeholder="email@example.com" required>
+                    <input type="email" name="email" class="form-input" placeholder="email@example.com" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label">お問い合わせ内容 (Message)</label>
-                    <textarea class="form-textarea" placeholder="ご自由にご記入ください..." required></textarea>
+                    <textarea name="message" class="form-textarea" placeholder="ご自由にご記入ください..." required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">送信する</button>
             </form>
@@ -121,12 +126,7 @@
     </footer>
 
     <script src="src/js/main.js"></script>
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('お問い合わせありがとうございます。\n(これはデモサイトのため、実際には送信されません)');
-        });
-    </script>
+
 </body>
 
 </html>
