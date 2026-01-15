@@ -12,7 +12,7 @@
         .hero {
             height: 85vh;
             /* Main sharp image */
-            background: url('src/assets/images/hero-v12.jpg') no-repeat center center/contain;
+            background: url('src/assets/images/hero-desktop.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -29,7 +29,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('src/assets/images/hero-v12.jpg') no-repeat center center/cover;
+            background: url('src/assets/images/hero-desktop.jpg') no-repeat center center/cover;
             filter: blur(30px);
             transform: scale(1.1);
             z-index: -1;
@@ -126,6 +126,18 @@
             font-size: 1.5rem;
             color: white;
             margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                background-image: url('src/assets/images/hero-mobile.png');
+                background-size: cover;
+                background-position: center;
+            }
+
+            .hero::before {
+                background-image: url('src/assets/images/hero-mobile.png');
+            }
         }
     </style>
 </head>
