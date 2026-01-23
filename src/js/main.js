@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.style.background = 'rgba(10, 10, 10, 0.9)';
-            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+            header.classList.add('glass-dark');
+            header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
         } else {
-            header.style.background = 'rgba(10, 10, 10, 0.5)'; // More transparent at top
+            header.classList.remove('glass-dark');
             header.style.boxShadow = 'none';
         }
     });
@@ -53,21 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (category === 'all' || category === productCategory) {
                 product.style.display = 'block';
-                // Reset animation
-                product.style.opacity = '0';
-                product.style.transform = 'translateY(10px)';
-
-                // Trigger reflow (removed, using setTimeout instead for reliability)
-                // void product.offsetWidth;
-
-                // Animate in with delay to ensure display:block is applied
                 setTimeout(() => {
-                    product.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
                     product.style.opacity = '1';
                     product.style.transform = 'translateY(0)';
                 }, 50);
             } else {
                 product.style.display = 'none';
+                product.style.opacity = '0';
+                product.style.transform = 'translateY(10px)';
             }
         });
     }
@@ -77,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const filterValue = btn.getAttribute('data-filter');
-                console.log('Filter clicked:', filterValue);
                 filterProducts(filterValue);
             });
         });
@@ -90,23 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.1
     };
 
-    // Check if IntersectionObserver is supported
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('is-visible');
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        const animatedElements = document.querySelectorAll('.card, .section h2, .section p, .animate-on-scroll');
+        const animatedElements = document.querySelectorAll('.animate-up, .card, .section h2, .section p');
         animatedElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            if (!el.classList.contains('animate-up')) {
+                el.classList.add('animate-up');
+            }
             observer.observe(el);
         });
     }
