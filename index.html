@@ -139,6 +139,56 @@
                 background-image: url('src/assets/images/hero-mobile-new.jpg');
             }
         }
+
+        /* Engineering Stories Section */
+        .featured-stories {
+            position: relative;
+            padding: 120px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('src/assets/images/frame-team-002-gallery-9.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+
+        .stories-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stories-meta {
+            font-family: var(--font-family-display);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--color-accent-gold);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .stories-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .stories-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-outline-white {
+            border: 1px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline-white:hover {
+            background: white;
+            color: black;
+        }
     </style>
 </head>
 
@@ -206,6 +256,19 @@
                     </div>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Engineering Stories Spotlight -->
+    <section class="featured-stories animate-on-scroll">
+        <div class="stories-content">
+            <span class="stories-meta">ENGINEERING STORIES</span>
+            <h2 class="stories-title">The Pursuit of<br>Lightweight</h2>
+            <p class="stories-text">
+                「002/TEAM」フレームに隠された、驚異の600g台を達成した積層技術の秘密。<br>
+                エンジニアが語る、妥協なき挑戦の記録を公開。
+            </p>
+            <a href="recommend.html" class="btn btn-outline-white">ストーリーを読む</a>
         </div>
     </section>
 
