@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>002/TEAM Story | BIGROCK JAPAN</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <style>
+        .article-hero {
+            padding-top: 160px;
+            padding-bottom: 80px;
+            background-color: var(--color-bg-secondary);
+            text-align: center;
+        }
+
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .article-meta {
+            color: var(--color-accent-gold);
+            font-family: var(--font-family-display);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .article-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+
+        .article-lead {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 60px;
+        }
+
+        .article-body h2 {
+            font-size: 2rem;
+            margin-top: 80px;
+            margin-bottom: 30px;
+            color: var(--color-accent-gold);
+        }
+
+        .article-body p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--color-text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            margin: 60px 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .article-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .article-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-text-primary);
+            border-left: 4px solid var(--color-accent-gold);
+            padding-left: 30px;
+            margin: 60px 0;
+            line-height: 1.5;
+        }
+
+        .tech-box {
+            background: var(--color-bg-secondary);
+            padding: 40px;
+            border: 1px solid var(--color-border);
+            margin: 60px 0;
+        }
+
+        .tech-box h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-item .label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .tech-item .value {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 80px;
+            color: var(--color-accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="src/assets/images/logo.png" alt="BIGROCK JAPAN">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="recommend.html" class="nav-link active">Recommend</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="article-hero">
+        <div class="container">
+            <span class="article-meta">Engineering Story</span>
+            <h1 class="article-title">002/TEAM: The Pursuit of Lightweight.</h1>
+        </div>
+    </section>
+
+    <article class="article-container">
+        <p class="article-lead">
+            「重さ」という物理的な制約をどこまで削れるか。BIGROCK 002/TEAMの開発は、そんなエンジニアの純粋な問いから始まりました。
+        </p>
+
+        <div class="article-body">
+            <h2>1. 素材の限界への挑戦</h2>
+            <p>
+                002/TEAMのフレーム重量603g（XXSサイズ）。この数字を実現するために、私たちは素材の段階から見直しを行いました。通常、軽量フレームには高弾性カーボンが多用されますが、それだけでは「脆さ」という課題に直面します。
+            </p>
+            <p>
+                私たちは三菱ケミカル製の超高弾性素材「T1100」を主要な接合部に配置。さらに、しなやかさを生む「T800」を適材適所に組み合わせる「ハイブリッド積層」を開発しました。これにより、羽のような軽さと、激しいスプリントに耐えうる剛性の共存に成功したのです。
+            </p>
+
+            <div class="article-image">
+                <img src="src/assets/images/frame-team-002-gallery-1.jpg" alt="002/TEAM Carbon Layer">
+            </div>
+
+            <p class="article-quote">
+                「ただ軽いだけのフレームは作らない。ライダーが踏み込んだ瞬間に、その力がダイレクトに推進力に変わる実感がなければ、それはBIGROCKではない。」
+            </p>
+
+            <h2>2. ヒルクライム、その先の景色</h2>
+            <p>
+                実戦での評価も極めて高いのが002/TEAMの特徴です。特に勾配のきついヒルクライムにおいて、リアセンター410mmという短い設計は、ライダーのパワーをロスなく後輪に伝えます。
+            </p>
+            <p>
+                「登りが嫌いなライダーにこそ、このフレームを届けてほしい」という開発チームの想いは、実際に日本の峠道でのテスト走行を繰り返す中で磨かれました。下り坂でのハンドリングの安定性も、厚みのあるヘッドチューブ設計によって確保されています。
+            </p>
+
+            <div class="tech-box">
+                <h3>Technical Excellence</h3>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <p class="label">Material Mix</p>
+                        <p class="value">Mitsubishi T1100/T800</p>
+                    </div>
+                    <div class="tech-item">
+                        <p class="label">Frame Weight</p>
+                        <p class="value">603g (XXS) - 780g (XXL)</p>
+                    </div>
+                    <div class="tech-item">
+                        <p class="label">UCI Status</p>
+                        <p class="value">Approved</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>3. 結論：なぜこれが「おすすめ」なのか</h2>
+            <p>
+                BIGROCKがこの002/TEAMを最もおすすめする理由は、その「汎用性の高さ」にあります。超軽量でありながら、日常のトレーニングから過酷なロードレース、そして週末のロングライドまで、あらゆるシーンで最高のパフォーマンスを発揮します。
+            </p>
+            <p>
+                一度この軽さを体験すると、以前のバイクには戻れない。そんな中毒性のある走りを、ぜひ体感してください。
+            </p>
+        </div>
+
+        <a href="recommend.html" class="back-link">← おすすめ一覧に戻る</a>
+        <br>
+        <a href="product-frame-team.html" class="btn" style="margin-top: 40px;">製品の技術仕様を見る</a>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 BIGROCK SPORTS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/js/main.js"></script>
+</body>
+
+</html>
