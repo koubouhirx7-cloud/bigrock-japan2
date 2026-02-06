@@ -1,0 +1,15 @@
+# robots.txt for BIGROCK JAPAN
+# https://www.bigrock-bike.jp/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.bigrock-bike.jp/sitemap.xml
+
+# Disallow crawling of source files
+Disallow: /src/js/
+Disallow: /src/css/
+
+# Allow images for search engine image indexing
+Allow: /src/assets/images/
